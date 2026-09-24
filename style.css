@@ -26,31 +26,21 @@ body {
     color: var(--text);
 }
 
-/* Main */
-
 .app {
     min-height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 35px 20px;
 }
-
-/* Card */
 
 .todo-card {
     width: 100%;
     max-width: 680px;
-
     background: var(--card);
-
     padding: 42px;
-
     border: 1px solid rgba(100, 80, 85, 0.12);
     border-radius: 8px;
-
     box-shadow: 0 24px 65px rgba(65, 48, 55, 0.12);
 }
 
@@ -58,55 +48,40 @@ body {
 
 .header {
     position: relative;
-
     padding-top: 16px;
-
     margin-bottom: 32px;
 }
 
 .top-line {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 55px;
     height: 3px;
-
     background: var(--accent);
-
     border-radius: 2px;
 }
 
 .label {
     margin-bottom: 11px;
-
     color: var(--accent);
-
     font-size: 11px;
     font-weight: 700;
-
     letter-spacing: 2.2px;
 }
 
 .header h1 {
     font-size: 36px;
     font-weight: 700;
-
     line-height: 1.2;
-
     letter-spacing: -0.8px;
-
     margin-bottom: 9px;
 }
 
 .description {
     max-width: 470px;
-
     color: var(--muted);
-
     font-size: 14px;
-
     line-height: 1.7;
 }
 
@@ -115,29 +90,20 @@ body {
 .input-section {
     display: flex;
     gap: 9px;
-
     margin-bottom: 28px;
 }
 
 .input-section input {
     flex: 1;
-
     height: 50px;
-
     padding: 0 17px;
-
     border: 1px solid var(--line);
     border-radius: 7px;
-
     outline: none;
-
     background: var(--soft);
-
     color: var(--text);
-
     font-family: inherit;
     font-size: 13px;
-
     transition: 0.25s ease;
 }
 
@@ -147,30 +113,21 @@ body {
 
 .input-section input:focus {
     border-color: var(--accent);
-
     background: var(--card);
-
     box-shadow: 0 0 0 3px var(--accent-light);
 }
 
 .input-section button {
     height: 50px;
-
     padding: 0 22px;
-
     border: none;
     border-radius: 7px;
-
     background: var(--accent);
-
     color: #ffffff;
-
     font-family: inherit;
     font-size: 13px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: 0.25s ease;
 }
 
@@ -184,24 +141,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding-bottom: 12px;
-
     border-bottom: 1px solid var(--line);
-
     font-size: 12px;
     font-weight: 600;
-
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 #taskCount {
     color: var(--muted);
-
     font-size: 11px;
     font-weight: 500;
-
     text-transform: none;
     letter-spacing: 0;
 }
@@ -212,90 +163,113 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
-
     list-style: none;
-
     margin-top: 10px;
 }
 
 .task-item {
     display: flex;
     align-items: center;
-
+    gap: 10px;
     min-height: 60px;
-
-    padding: 10px 12px 10px 16px;
-
+    padding: 10px 12px 10px 13px;
     background: var(--soft);
-
     border: 1px solid transparent;
     border-radius: 7px;
-
     transition: 0.25s ease;
 }
 
 .task-item:hover {
     background: #f2ebe7;
-
     border-color: var(--line);
 }
 
+/* Complete Checkbox */
+
+.complete-btn {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1.5px solid #b9adb0;
+    border-radius: 50%;
+
+    background: transparent;
+    color: transparent;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.complete-btn:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+}
+
+/* Completed Task */
+
+.task-item.completed .complete-btn {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white;
+}
+
+.task-item.completed .task-text {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+}
+
+/* Task Text */
+
 .task-text {
     flex: 1;
-
-    padding-right: 15px;
-
+    min-width: 0;
+    padding-right: 8px;
     color: var(--text);
-
     font-size: 13px;
     line-height: 1.5;
-
     word-break: break-word;
 }
 
-/* Task Buttons */
+/* Buttons */
 
 .task-actions {
     display: flex;
     gap: 5px;
-
     flex-shrink: 0;
 }
 
 .task-actions button {
     min-width: 55px;
-
     padding: 7px 9px;
-
     border: 1px solid var(--line);
     border-radius: 6px;
-
     background: var(--card);
-
     color: var(--muted);
-
     font-family: inherit;
     font-size: 10px;
     font-weight: 600;
-
     cursor: pointer;
-
     transition: 0.25s ease;
 }
 
 .task-actions .edit-btn:hover {
     color: var(--accent-dark);
-
     border-color: var(--accent);
-
     background: var(--accent-light);
 }
 
 .task-actions .delete-btn:hover {
     color: var(--danger);
-
     border-color: var(--danger);
-
     background: #f8e9eb;
 }
 
@@ -303,7 +277,6 @@ body {
 
 .empty-state {
     padding: 45px 20px 10px;
-
     text-align: center;
 }
 
@@ -321,7 +294,6 @@ body {
     border-radius: 50%;
 
     background: var(--accent-light);
-
     color: var(--accent);
 
     font-size: 18px;
@@ -330,14 +302,12 @@ body {
 
 .empty-state h2 {
     margin-bottom: 6px;
-
     font-size: 15px;
     font-weight: 600;
 }
 
 .empty-state p {
     color: var(--muted);
-
     font-size: 12px;
 }
 
@@ -347,18 +317,12 @@ body {
 
     .app {
         align-items: flex-start;
-
         padding: 30px 14px;
     }
 
     .todo-card {
         padding: 32px 20px;
-
         border-radius: 7px;
-    }
-
-    .header {
-        padding-top: 14px;
     }
 
     .header h1 {
@@ -384,7 +348,6 @@ body {
 
     .task-item {
         align-items: flex-start;
-
         padding: 12px;
     }
 

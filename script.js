@@ -36,9 +36,22 @@ function renderTasks() {
         const li = document.createElement("li");
         li.className = "task-item";
 
+        if (task.completed) {
+            li.classList.add("completed");
+        }
+
+        const completeButton = document.createElement("button");
+        completeButton.className = "complete-btn";
+        completeButton.innerHTML = "✓";
+        completeButton.title = "Mark task as complete";
+
+        completeButton.addEventListener("click", () => {
+            toggleTask(index);
+        });
+
         const taskText = document.createElement("span");
         taskText.className = "task-text";
-        taskText.textContent = task;
+        taskText.textContent = task.text;
 
         const actions = document.createElement("div");
         actions.className = "task-actions";
@@ -62,6 +75,7 @@ function renderTasks() {
         actions.appendChild(editButton);
         actions.appendChild(deleteButton);
 
+        li.appendChild(completeButton);
         li.appendChild(taskText);
         li.appendChild(actions);
 
@@ -72,7 +86,6 @@ function renderTasks() {
 }
 
 function addTask() {
-
     const task = taskInput.value.trim();
 
     if (task === "") {
@@ -81,7 +94,10 @@ function addTask() {
         return;
     }
 
-    tasks.push(task);
+    tasks.push({
+        text: task,
+        completed: false
+    });
 
     saveTasks();
     renderTasks();
@@ -90,11 +106,17 @@ function addTask() {
     taskInput.focus();
 }
 
-function editTask(index) {
+function toggleTask(index) {
+    tasks[index].completed = !tasks[index].completed;
 
+    saveTasks();
+    renderTasks();
+}
+
+function editTask(index) {
     const updatedTask = prompt(
         "Edit your task:",
-        tasks[index]
+        tasks[index].text
     );
 
     if (updatedTask === null) {
@@ -108,14 +130,13 @@ function editTask(index) {
         return;
     }
 
-    tasks[index] = trimmedTask;
+    tasks[index].text = trimmedTask;
 
     saveTasks();
     renderTasks();
 }
 
 function deleteTask(index) {
-
     const confirmDelete = confirm(
         "Are you sure you want to delete this task?"
     );
@@ -133,11 +154,9 @@ function deleteTask(index) {
 addTaskBtn.addEventListener("click", addTask);
 
 taskInput.addEventListener("keydown", (event) => {
-
     if (event.key === "Enter") {
         addTask();
     }
-
 });
 
 renderTasks();
